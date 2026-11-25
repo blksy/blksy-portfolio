@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: #080b16;
+  --color-surface: #11182b;
+  --color-surface-elevated: #1b2340;
+  --color-primary: #a855f7;
+  --color-secondary: #22d3ee;
+  --color-gold: #facc15;
+  --color-border: #343b60;
+  --color-foreground: #f1f5f9;
+  --color-muted: #94a3b8;
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-pixel: "Press Start 2P", monospace;
+
+  /* Gaming effects */
+  --shadow-neon: 0 0 20px rgb(168 85 247 / 35%);
+  --shadow-neon-cyan: 0 0 20px rgb(34 211 238 / 35%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-bold;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-secondary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
