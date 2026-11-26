@@ -1,5 +1,5 @@
-import { Gamepad2, Mail, ArrowRight } from "lucide-react";
 import Button from "./components/ui/Button";
+import GamingPanel from "./components/ui/GamingPanel";
 
 function App() {
   return (
@@ -10,28 +10,33 @@ function App() {
 
       <h1 className="font-pixel text-3xl text-primary">BLKSY_</h1>
 
-      <p className="text-muted">Developer Portfolio</p>
+      <p className="mb-12 text-center font-mono text-secondary">
+        Gaming Panel Component Preview
+      </p>
 
-      <p className="font-mono text-secondary">Button Component Preview</p>
+      <div className="grid gap-6 md:grid-cols-3">
+        <GamingPanel variant="purple" glow hoverable>
+          <h2 className="mb-4 text-xl">About Me</h2>
 
-      <Button variant="primary" size="lg">
-        <Gamepad2 size={20} />
-        Explore Projects
-        <ArrowRight size={20} />
-      </Button>
+          <p className="text-muted">
+            Developer, gamer and technology enthusiast.
+          </p>
+        </GamingPanel>
 
-      <Button variant="secondary">
-        <Mail size={20} />
-        Get in Touch
-      </Button>
+        <GamingPanel variant="cyan" glow hoverable>
+          <h2 className="mb-4 text-xl">Tech Stack</h2>
 
-      <Button variant="ghost">View GitHub</Button>
+          <p className="text-muted">Python, Django, React and TypeScript.</p>
+        </GamingPanel>
 
-      <Button disabled>Unavailable</Button>
+        <GamingPanel variant="gold" glow hoverable>
+          <h2 className="mb-4 text-xl">Projects</h2>
 
-      <Button onClick={() => console.log("Achievement unlocked!")}>
-        Test Click
-      </Button>
+          <p className="mb-6 text-muted">Explore my latest projects.</p>
+
+          <Button size="sm">View Projects</Button>
+        </GamingPanel>
+      </div>
     </main>
   );
 }
