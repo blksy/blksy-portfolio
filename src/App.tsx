@@ -1,42 +1,59 @@
+import { UserRound, Code2, FolderCode } from "lucide-react";
+
 import Button from "./components/ui/Button";
 import GamingPanel from "./components/ui/GamingPanel";
+import SectionHeading from "./components/ui/SectionHeading";
 
 function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6">
-      <span className="font-mono text-secondary">
-        &gt; System initialized...
-      </span>
+    <main className="mx-auto w-full max-w-6xl space-y-12 px-6 py-16">
+      <section>
+        <SectionHeading
+          index="01"
+          label="Player Profile"
+          title="About Me"
+          icon={UserRound}
+          description="Developer. Gamer. Technology enthusiast."
+        />
 
-      <h1 className="font-pixel text-3xl text-primary">BLKSY_</h1>
-
-      <p className="mb-12 text-center font-mono text-secondary">
-        Gaming Panel Component Preview
-      </p>
-
-      <div className="grid gap-6 md:grid-cols-3">
-        <GamingPanel variant="purple" glow hoverable>
-          <h2 className="mb-4 text-xl">About Me</h2>
-
-          <p className="text-muted">
-            Developer, gamer and technology enthusiast.
-          </p>
+        <GamingPanel variant="purple" glow>
+          <p className="text-muted">Welcome to my developer portfolio.</p>
         </GamingPanel>
+      </section>
 
-        <GamingPanel variant="cyan" glow hoverable>
-          <h2 className="mb-4 text-xl">Tech Stack</h2>
+      <section>
+        <SectionHeading
+          index="02"
+          label="Inventory"
+          title="Tech Stack"
+          icon={Code2}
+          variant="cyan"
+        />
 
+        <GamingPanel variant="cyan" glow>
           <p className="text-muted">Python, Django, React and TypeScript.</p>
         </GamingPanel>
+      </section>
+
+      <section>
+        <SectionHeading
+          index="03"
+          label="Quest Log"
+          title="Featured Projects"
+          icon={FolderCode}
+          variant="gold"
+        />
 
         <GamingPanel variant="gold" glow hoverable>
-          <h2 className="mb-4 text-xl">Projects</h2>
+          <h3 className="mb-3 text-xl font-semibold">Artiva</h3>
 
-          <p className="mb-6 text-muted">Explore my latest projects.</p>
+          <p className="mb-5 text-muted">
+            A booking platform for beauty and tattoo professionals.
+          </p>
 
-          <Button size="sm">View Projects</Button>
+          <Button size="sm">View Project</Button>
         </GamingPanel>
-      </div>
+      </section>
     </main>
   );
 }
