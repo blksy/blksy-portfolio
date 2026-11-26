@@ -1,0 +1,102 @@
+.gaming-button {
+  --button-cut: 10px;
+  --button-border-width: 1px;
+  --button-border-color: var(--color-primary);
+  --button-background: var(--color-surface);
+
+  position: relative;
+  isolation: isolate;
+
+  transition:
+    filter 200ms ease,
+    transform 150ms ease,
+    color 200ms ease;
+}
+
+.gaming-button::before,
+.gaming-button::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+
+  clip-path: polygon(
+    var(--button-cut) 0,
+    calc(100% - var(--button-cut)) 0,
+    100% var(--button-cut),
+    100% calc(100% - var(--button-cut)),
+    calc(100% - var(--button-cut)) 100%,
+    var(--button-cut) 100%,
+    0 calc(100% - var(--button-cut)),
+    0 var(--button-cut)
+  );
+
+  transition: background-color 200ms ease;
+}
+
+.gaming-button::before {
+  inset: 0;
+  background: var(--button-border-color);
+  z-index: -2;
+}
+
+.gaming-button::after {
+  inset: var(--button-border-width);
+  background: var(--button-background);
+  z-index: -1;
+}
+
+.gaming-button--primary {
+  --button-border-color: var(--color-primary);
+  --button-background: linear-gradient(135deg, #38165b, #151126);
+  filter: drop-shadow(0 0 5px rgb(168 85 247 / 30%));
+  color: var(--color-foreground);
+}
+
+.gaming-button--secondary {
+  --button-border-color: var(--color-border);
+  --button-background: var(--color-surface);
+
+  color: var(--color-foreground);
+}
+
+.gaming-button--primary:hover:not(:disabled) {
+  --button-border-color: #d8b4fe;
+
+  --button-background: linear-gradient(135deg, #602090, #281640);
+
+  filter: drop-shadow(0 0 12px rgb(168 85 247 / 65%));
+}
+
+.gaming-button--secondary:hover:not(:disabled) {
+  --button-border-color: var(--color-secondary);
+  --button-background: var(--color-surface-elevated);
+
+  color: var(--color-secondary);
+
+  filter: drop-shadow(0 0 8px rgb(34 211 238 / 35%));
+}
+
+.gaming-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.gaming-button:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 4px;
+}
+
+.gaming-button:disabled {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gaming-button,
+  .gaming-button::before,
+  .gaming-button::after {
+    transition: none;
+  }
+
+  .gaming-button:active:not(:disabled) {
+    transform: none;
+  }
+}

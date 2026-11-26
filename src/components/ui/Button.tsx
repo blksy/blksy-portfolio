@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "../../utils/cn";
+import "./Button.css";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -10,13 +11,10 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "border-primary bg-primary/15 text-foreground shadow-neon hover:bg-primary/30",
-
-  secondary:
-    "border-border bg-surface text-foreground hover:border-secondary hover:text-secondary",
-
-  ghost: "border-transparent bg-transparent text-muted hover:text-foreground",
+  primary: "gaming-button gaming-button--primary",
+  secondary: "gaming-button gaming-button--secondary",
+  ghost:
+    "bg-transparent text-muted transition-colors duration-200 hover:text-foreground",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -38,8 +36,7 @@ function Button({
       type={type}
       className={cn(
         "inline-flex items-center justify-center gap-2",
-        "border font-semibold",
-        "transition-colors duration-200",
+        "font-semibold",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "motion-reduce:transition-none",
         variantStyles[variant],
