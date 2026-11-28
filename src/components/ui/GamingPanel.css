@@ -1,0 +1,92 @@
+.gaming-panel {
+  --panel-cut: 14px;
+  --panel-border-width: 1px;
+  --panel-accent: var(--color-primary);
+  --panel-background: var(--color-surface);
+
+  position: relative;
+  isolation: isolate;
+
+  transition:
+    transform 200ms ease,
+    filter 200ms ease;
+}
+
+.gaming-panel::before,
+.gaming-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+
+  clip-path: polygon(
+    var(--panel-cut) 0,
+    calc(100% - var(--panel-cut)) 0,
+    100% var(--panel-cut),
+    100% calc(100% - var(--panel-cut)),
+    calc(100% - var(--panel-cut)) 100%,
+    var(--panel-cut) 100%,
+    0 calc(100% - var(--panel-cut)),
+    0 var(--panel-cut)
+  );
+}
+
+.gaming-panel::before {
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    var(--panel-accent),
+    var(--color-border),
+    var(--panel-accent)
+  );
+
+  z-index: -2;
+}
+
+.gaming-panel::after {
+  inset: var(--panel-border-width);
+  background: var(--panel-background);
+  z-index: -1;
+  transition: background-color 200ms ease;
+}
+
+.gaming-panel--purple {
+  --panel-accent: var(--color-primary);
+}
+
+.gaming-panel--cyan {
+  --panel-accent: var(--color-secondary);
+}
+
+.gaming-panel--gold {
+  --panel-accent: var(--color-gold);
+}
+
+.gaming-panel--glow {
+  filter: drop-shadow(
+    0 0 8px color-mix(in srgb, var(--panel-accent) 30%, transparent)
+  );
+}
+
+.gaming-panel--hoverable:hover {
+  transform: translateY(-3px);
+
+  --panel-background: var(--color-surface-elevated);
+}
+
+.gaming-panel--hoverable.gaming-panel--glow:hover {
+  filter: drop-shadow(
+    0 0 12px color-mix(in srgb, var(--panel-accent) 55%, transparent)
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gaming-panel,
+  .gaming-panel::after {
+    transition: none;
+  }
+
+  .gaming-panel--hoverable:hover {
+    transform: none;
+  }
+}

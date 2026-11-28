@@ -1,122 +1,61 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { UserRound, Code2, FolderCode } from "lucide-react";
+
+import Button from "./components/ui/Button";
+import GamingPanel from "./components/ui/GamingPanel";
+import SectionHeading from "./components/ui/SectionHeading";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+    <main className="mx-auto w-full max-w-6xl space-y-12 px-6 py-16">
+      <section>
+        <SectionHeading
+          index="01"
+          label="Player Profile"
+          title="About Me"
+          icon={UserRound}
+          description="Developer. Gamer. Technology enthusiast."
+        />
+
+        <GamingPanel variant="purple" glow>
+          <p className="text-muted">Welcome to my developer portfolio.</p>
+        </GamingPanel>
+      </section>
+
+      <section>
+        <SectionHeading
+          index="02"
+          label="Inventory"
+          title="Tech Stack"
+          icon={Code2}
+          variant="cyan"
+        />
+
+        <GamingPanel variant="cyan" glow>
+          <p className="text-muted">Python, Django, React and TypeScript.</p>
+        </GamingPanel>
+      </section>
+
+      <section>
+        <SectionHeading
+          index="03"
+          label="Quest Log"
+          title="Featured Projects"
+          icon={FolderCode}
+          variant="gold"
+        />
+
+        <GamingPanel variant="gold" glow hoverable>
+          <h3 className="mb-3 text-xl font-semibold">Artiva</h3>
+
+          <p className="mb-5 text-muted">
+            A booking platform for beauty and tattoo professionals.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+
+          <Button size="sm">View Project</Button>
+        </GamingPanel>
       </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;
